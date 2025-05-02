@@ -1,0 +1,26 @@
+import { useState } from 'react'
+import './App.css'
+import Home from './componets/Home'
+import {BrowserRouter as Router, Routes,Route} from 'react-router-dom'
+import Register from './componets/Register'
+import SignUp from './componets/SignUp'
+import Dashboard from './componets/Dashboard'
+import AddClients from './componets/AddClients'
+
+function App() {
+  return (
+    <div className='bg-white h-screen w-screen text-black'>
+      <Router>
+        <Routes>
+           <Route path="/" element={<Home/>} />
+           <Route path="/login" element={<Register/>} />
+           <Route path="/register" element={<SignUp/>} />
+           <Route path="/dashboard" element={<Dashboard/>} />
+           <Route path='/addClient' element={<AddClients/>} />
+        </Routes>
+      </Router>
+    </div>
+  )
+}
+
+export default App
