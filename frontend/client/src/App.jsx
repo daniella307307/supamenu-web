@@ -6,6 +6,7 @@ import Register from './componets/Register'
 import SignUp from './componets/SignUp'
 import Dashboard from './componets/Dashboard'
 import AddClients from './componets/AddClients'
+import RestoProfile1 from './componets/RestoProfile1'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
            <Route path="/register" element={<SignUp/>} />
            <Route path="/dashboard" element={<Dashboard/>} />
            <Route path='/addClient' element={<AddClients/>} />
+           <Route path='/restoProfile' element={<RestoProfile1/>} />
         </Routes>
       </Router>
     </div>

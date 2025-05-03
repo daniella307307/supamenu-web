@@ -46,8 +46,8 @@ function Home() {
          <h2 className='text-white font-bold text-2xl'>Register your restaurant on SupaMenu</h2>
          <span className='text-white  font-semibold'>for free and get more revenue</span>
          <div className='flex  justify-between items-center gap-4'>
-            <div className='bg-orange-400 text-white p-2 rounded-lg hover:bg-orange-500 hover:cursor-pointer min-h[2em] min-w-[200px]  text-center'>Register your Restaurant</div>
-            <button className='bg-gray-700 text-white font-semibold rounded-lg p-2 px-4 hover:border-blue-200 hover:border hover:cursor-pointer'>Restaurant already registered? Signin</button>
+            <div className='bg-orange-400 text-white p-2 rounded-lg hover:bg-orange-500 hover:cursor-pointer min-h[2em] min-w-[200px]  text-center'><a href='/register'>Register your Restaurant</a></div>
+            <button className='bg-gray-700 text-white font-semibold rounded-lg p-2 px-4 hover:border-blue-200 hover:border hover:cursor-pointer'> <a href='/login'>Restaurant already registered? Signin</a></button>
          </div>
       </div>
       <div className='flex flex-col items-center justify-center gap-4  p-4 w-full'>
