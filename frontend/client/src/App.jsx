@@ -8,6 +8,7 @@ import Dashboard from './componets/Dashboard'
 import AddClients from './componets/AddClients'
 import RestoProfile1 from './componets/RestoProfile1'
 import Overview from './componets/Overview'
+import Menu from './componets/Menu'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
            <Route path='/addClient' element={<AddClients/>} />
            <Route path='/restoProfile' element={<RestoProfile1/>} />
            <Route path='/overview' element={<Overview/>}/>
+           <Route path='/menu' element={<Menu/>}/>
         </Routes>
       </Router>
     </div>
