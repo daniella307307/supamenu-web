@@ -7,6 +7,7 @@ import SignUp from './componets/SignUp'
 import Dashboard from './componets/Dashboard'
 import AddClients from './componets/AddClients'
 import RestoProfile1 from './componets/RestoProfile1'
+import Overview from './componets/Overview'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
            <Route path="/dashboard" element={<Dashboard/>} />
            <Route path='/addClient' element={<AddClients/>} />
            <Route path='/restoProfile' element={<RestoProfile1/>} />
+           <Route path='/overview' element={<Overview/>}/>
         </Routes>
       </Router>
     </div>
