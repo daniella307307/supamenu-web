@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "../screens/Sidebar";
 import MenuItem from "../screens/MenuItem";
+import AddNewItem from "../screens/AddNewItem";
 
 function Menu() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
@@ -162,9 +163,14 @@ function Menu() {
               ))}
             </div>
           </div>
-          <div className="mt-4">
+         <div className="flex items-start justify-between">
+         <div className="mt-4">
             <MenuItem items={filteredMenu} selectedCategory={selectedCategory} />
           </div>
+          <div className="mt-4">
+            <AddNewItem/>
+          </div>
+         </div>
         </div>
       </div>
     </div>
