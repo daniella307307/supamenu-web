@@ -12,7 +12,7 @@ import {
 
 function Sidebar() {
   return (
-    <div className="bg-orange-400 h-screen w-1/4 text-gray-600 flex flex-col">
+    <div className="bg-orange-400 h-screen w-1/6 text-gray-600 flex flex-col">
       {/* Header */}
       <div className="bg-black w-full py-4">
         <h1 className="text-xl font-bold text-orange-400 text-center">
@@ -26,6 +26,9 @@ function Sidebar() {
           className="flex items-center gap-4 cursor-pointer hover:text-white h-[40px] p-2 w-full hover:border-l-2 hover:border-white transition-all duration-300 ease-in-out"
           tabIndex={0}
           role="button"
+          onClick={()=>{
+            window.location.href="/overview"
+          }}
         >
           <FontAwesomeIcon icon={faCreditCardAlt} className="text-gray-700 hover:text-white" />
           <span className="text-sm font-semibold">Overview</span>
@@ -35,6 +38,9 @@ function Sidebar() {
           className="flex items-center gap-4 cursor-pointer hover:text-white h-[40px] p-2 w-full hover:border-l-2 hover:border-white transition-all duration-300 ease-in-out"
           tabIndex={0}
           role="button"
+          onClick={()=>{
+            window.location.href="/addClient"
+          }}
         >
           <FontAwesomeIcon icon={faPieChart} className="text-gray-700 hover:text-white" />
           <span className="text-sm font-semibold">Clients</span>
@@ -44,6 +50,11 @@ function Sidebar() {
           className="flex items-center gap-4 cursor-pointer hover:text-white h-[40px] p-2 w-full hover:border-l-2 hover:border-white transition-all duration-300 ease-in-out"
           tabIndex={0}
           role="button"
+          onClick={
+            ()=>{
+              window.location.href="/dashboard"
+            }
+          }
         >
           <FontAwesomeIcon icon={faUsers} className="text-gray-700 hover:text-white" />
           <span className="text-sm font-semibold">Users</span>

@@ -3,15 +3,18 @@ import Sidebar from "../screens/Sidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Chart from "../screens/Chart";
+import Card from "../screens/Card";
+import Filter from "../screens/Filter";
 
 function Overview() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(""); // Add search state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilters, setActiveFilters] = useState({});
   const searchInputRef = useRef(null);
 
   const toggleSearch = () => {
     setIsSearchVisible((prev) => !prev);
-    if (isSearchVisible) setSearchQuery(""); // Clear search when hiding
+    if (isSearchVisible) setSearchQuery("");
   };
 
   useEffect(() => {
@@ -29,7 +32,18 @@ function Overview() {
     ordersPerHour: 4560,
   };
 
-  // Dynamic date
+  // Filter metrics based on search query and active filters
+  const filteredMetrics = {
+    ...metrics,
+    clients: activeFilters.restaurant
+      ? metrics.clients * 0.5
+      : activeFilters.hotels
+      ? metrics.clients * 0.3
+      : activeFilters.pub
+      ? metrics.clients * 0.2
+      : metrics.clients,
+  };
+
   const currentDate = new Date().toLocaleString("en-US", {
     day: "2-digit",
     month: "long",
@@ -37,6 +51,7 @@ function Overview() {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
+    second: undefined,
   });
 
   return (
@@ -56,7 +71,7 @@ function Overview() {
               type="text"
               placeholder="Search"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)} // Handle search input
+              onChange={(e) => setSearchQuery(e.target.value)}
               className={`border border-gray-800 text-black rounded-full p-2 w-full max-w-[20rem] transition-opacity duration-300 ${
                 isSearchVisible ? "opacity-100" : "opacity-0 hidden"
               }`}
@@ -82,7 +97,7 @@ function Overview() {
               Jacques Kagabo
             </span>
             <img
-              src="https://i.pinimg.com/736x/a4/0c/91/a40c9137f94d7fa20fba408c5d871171.jpg"
+              src="/profile.jpg" // Replace with local asset
               alt="User profile picture"
               className="rounded-full w-[30px] h-[30px]"
             />
@@ -91,9 +106,12 @@ function Overview() {
         <div className="flex-1 overflow-auto">
           <div className="flex flex-wrap gap-4">
             {[
-              { label: "Clients", value: metrics.clients },
-              { label: "Revenues (FRW)", value: metrics.revenues.toLocaleString() },
-              { label: "Orders", value: metrics.orders.toLocaleString() },
+              { label: "Clients", value: filteredMetrics.clients },
+              {
+                label: "Revenues (FRW)",
+                value: filteredMetrics.revenues.toLocaleString(),
+              },
+              { label: "Orders", value: filteredMetrics.orders.toLocaleString() },
             ].map(({ label, value }) => (
               <div
                 key={label}
@@ -119,10 +137,13 @@ function Overview() {
               </div>
               <div className="flex flex-col justify-between gap-4 border-l border-gray-400 p-4">
                 {[
-                  { label: "Orders", value: metrics.orders.toLocaleString() },
-                  { label: "Items", value: metrics.items.toLocaleString() },
-                  { label: "Order/hour", value: metrics.ordersPerHour.toLocaleString() },
-                  { label: "Clients", value: metrics.clients },
+                  { label: "Orders", value: filteredMetrics.orders.toLocaleString() },
+                  { label: "Items", value: filteredMetrics.items.toLocaleString() },
+                  {
+                    label: "Order/hour",
+                    value: filteredMetrics.ordersPerHour.toLocaleString(),
+                  },
+                  { label: "Clients", value: filteredMetrics.clients },
                 ].map(({ label, value }, index) => (
                   <div key={label} className="flex flex-col items-center">
                     <span className="text-gray-800 font-bold">{label}</span>
@@ -132,6 +153,10 @@ function Overview() {
                 ))}
               </div>
             </div>
+          </div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-4">
+            <Card />
+            <Filter onFilterChange={setActiveFilters} />
           </div>
         </div>
       </div>

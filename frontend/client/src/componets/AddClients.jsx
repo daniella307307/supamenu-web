@@ -87,7 +87,7 @@ function AddClients() {
           />
 
           {/* Submit Button */}
-          <button className="bg-orange-400 text-white font-semibold rounded-lg p-2 px-4 hover:bg-orange-500 hover:cursor-pointer w-full mt-4">
+          <button className="bg-orange-400 text-white font-semibold rounded-lg p-2 px-4 hover:bg-orange-500 hover:cursor-pointer w-full mt-4" onClick={()=>{window.location.href='restoProfile'}}>
             Add Client
           </button>
         </form>
